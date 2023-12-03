@@ -23,27 +23,29 @@ namespace Log_In
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if ((textBox1.Text != "") && (textBox3.Text != ""))
+            {
+                SqlConnection conn = new SqlConnection(cs);
 
-            SqlConnection conn = new SqlConnection(cs);
+                string query = "insert into registrationData (username, email, password) values(@user, @mail, @pass)";
 
-            string query = "insert into registrationData (username, email, password) values(@user, @mail, @pass)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@user", textBox1.Text);
+                cmd.Parameters.AddWithValue("@mail", textBox2.Text);
+                cmd.Parameters.AddWithValue("@pass", textBox3.Text);
 
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@user", textBox1.Text);
-            cmd.Parameters.AddWithValue("@mail", textBox2.Text);
-            cmd.Parameters.AddWithValue("@pass", textBox3.Text);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                MessageBox.Show("Registration Successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            MessageBox.Show("Registration Successful.", "Success", MessageBoxButtons.OK);
+                LogIn logIn = new LogIn();
 
-            LogIn logIn = new LogIn();
-
-            logIn.ReceivedName = textBox1.Text;
-            logIn.ReceivedPassword = textBox3.Text;
-            logIn.ShowDialog();
+                logIn.ReceivedName = textBox1.Text;
+                logIn.ReceivedPassword = textBox3.Text;
+                logIn.ShowDialog();
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

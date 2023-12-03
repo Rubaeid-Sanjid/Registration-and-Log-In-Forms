@@ -47,12 +47,12 @@ namespace Log_In
 
                 if(reader.HasRows == true)
                 {
-                    MessageBox.Show("Log In Successful.", "Success", MessageBoxButtons.OK);
+                    MessageBox.Show("Log In Successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 else
                 {
-                    MessageBox.Show("Log In Failed.", "Fail", MessageBoxButtons.OK);
+                    MessageBox.Show("Log In Failed.", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 conn.Close();
             }
