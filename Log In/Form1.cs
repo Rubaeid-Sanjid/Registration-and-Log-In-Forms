@@ -44,7 +44,8 @@ namespace Log_In
 
                 logIn.ReceivedName = textBox1.Text;
                 logIn.ReceivedPassword = textBox3.Text;
-                logIn.ShowDialog();
+                logIn.Show();
+                this.Hide();
             }
         }
 
@@ -63,7 +64,8 @@ namespace Log_In
         private void button3_Click(object sender, EventArgs e)
         {
             LogIn logIn = new LogIn();
-            logIn.ShowDialog();
+            logIn.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)

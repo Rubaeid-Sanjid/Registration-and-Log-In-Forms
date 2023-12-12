@@ -73,7 +73,8 @@ namespace Log_In
         private void button3_Click(object sender, EventArgs e)
         {
             Form1 register = new Form1();
-            register.ShowDialog();
+            register.Show();
+            this.Hide();
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
